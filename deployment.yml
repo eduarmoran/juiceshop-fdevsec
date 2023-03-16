@@ -1,0 +1,29 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pod-shopping
+spec:
+  template:
+    metadata:
+      labels:
+        app: pod-shopping
+    spec:
+      containers:
+      - name: pod-shopping
+        image: 363412468025.dkr.ecr.us-east-2.amazonaws.com/pod-shopping:latest
+  selector:
+    matchLabels:
+      app: pod-shopping
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: pod-shopping
+spec:
+  type: LoadBalancer
+  selector:
+    app: pod-shopping
+  ports:
+  - name: http
+    port: 6001
+    targetPort: 3000
