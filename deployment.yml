@@ -25,5 +25,5 @@ spec:
     app: juiceshop-fdevsec
   ports:
   - name: http
-    port: 5001
-    targetPort: 3001
+    port: 5006
+    targetPort: 3000
