@@ -1,29 +1,29 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: pod-shopping
+  name: juiceshop-fdevsec
 spec:
   template:
     metadata:
       labels:
-        app: pod-shopping
+        app: juiceshop-fdevsec
     spec:
       containers:
-      - name: pod-shopping
-        image: 363412468025.dkr.ecr.us-east-2.amazonaws.com/pod-shopping:latest
+      - name: juiceshop-fdevsec
+        image: 363412468025.dkr.ecr.us-east-2.amazonaws.com/juiceshop-fdevsec:latest
   selector:
     matchLabels:
-      app: pod-shopping
+      app: juiceshop-fdevsec
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: pod-shopping
+  name: juiceshop-fdevsec
 spec:
   type: LoadBalancer
   selector:
-    app: pod-shopping
+    app: juiceshop-fdevsec
   ports:
   - name: http
-    port: 6001
+    port: 5001
     targetPort: 3000
