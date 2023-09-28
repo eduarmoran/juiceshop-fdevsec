@@ -48,7 +48,7 @@ pipeline {
             }
         }
         
-        
+    /*    
          stage('DAST FortiDevSec'){
             steps {
                  sh 'sleep 1m'
@@ -58,6 +58,6 @@ pipeline {
             }
         }  
       
-        
+        */
     }
 }
