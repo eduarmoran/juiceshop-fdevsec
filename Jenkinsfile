@@ -29,7 +29,7 @@ pipeline {
         }
 
         
-       
+     /*  
         stage('Push') {
             steps {
                 script{
@@ -57,7 +57,7 @@ pipeline {
                  sh 'docker run --rm --env-file /tmp/env --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_dast:latest'                 
             }
         }  
-      
+      */
         
     }
 }
