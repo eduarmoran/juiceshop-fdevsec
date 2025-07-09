@@ -1,0 +1,20 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: SAST
+  displayName: 'Static Application Security Testing (SAST) Stage'
+  jobs:
+  - job: RunSAST
+    displayName: 'Run SAST'
+    steps:
+    - task: Bash@3
+      displayName: 'Install and Run SAST'
+      inputs:
+        targetType: 'inline'
+        script: |
+          env | grep -E "AZURE_HTTP_USER_AGENT|BUILD_BUILDID|BUILD_SOURCEBRANCHNAME|BUILD_SOURCEVERSION" > /tmp/env
+          docker run --pull always --rm --env-file /tmp/env --mount type=bind,source="$PWD",target=/scan registry.fortidevsec.forticloud.com/fdevsec_sast:latest
